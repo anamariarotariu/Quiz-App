@@ -2,13 +2,19 @@
   background-color: #ecf5ff;
   /* default font-size: 16px, 62.5% of 16 => 10px */
   font-size: 62.5%;
+  --general-color: #56a5eb;
+  --box-shadow: rgba(86, 185, 235, 0.5);
+  --placeholder: #aaa;
+  --btn-background-color: #fff;
+  --default: #333;
 }
+
 * {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: var(--default);
 }
 h1,
 h2,
@@ -18,7 +24,7 @@ h4 {
 }
 h1 {
   font-size: 5.4rem;
-  color: #56a5eb;
+  color: var(--general-color);
   margin-bottom: 5rem;
 }
 /* selects only the span which are dirrect childrens of the h1 */
@@ -73,15 +79,15 @@ h3 {
   padding: 1rem 0;
   width: 20rem;
   text-align: center;
-  border: 0.1rem solid #56a5eb;
+  border: 0.1rem solid var(--general-color);
   margin-bottom: 1rem;
   text-decoration: none;
-  color: #56a5eb;
-  background-color: #fff;
+  color: var(--general-color);
+  background-color: var(--btn-background-color);
 }
 .btn:hover {
   cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem rgba(86, 185, 235, 0.5);
+  box-shadow: 0 0.4rem 1.4rem var(--box-shadow);
   transform: translateX(-0.1rem);
   transition: transform 150ms;
 }
@@ -103,8 +109,8 @@ input {
   padding: 1.5rem;
   font-size: 1.8rem;
   border: none;
-  box-shadow: 0 0.1rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+  box-shadow: 0 0.1rem 1.4rem 0 var(--box-shadow);
 }
 input::placeholder {
-  color: #aaa;
+  color: var(--placeholder);
 }
