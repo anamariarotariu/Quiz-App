@@ -3,6 +3,8 @@ const choices = Array.from(document.getElementsByClassName('choice-text'));
 const progressText = document.getElementById('progress');
 const scoreHud = document.getElementById('score');
 const progressBarFull = document.getElementById('progress--bar--full');
+const loader = document.getElementById('loader');
+const game = document.getElementById('game');
 let currentQuestion = {};
 let acceptingAnswer = false;
 let score = 0;
@@ -10,7 +12,8 @@ let questionCounter = 0;
 let availableQuestion = [];
 
 let questions = [];
-fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple").then((res) =>{
+
+fetch('https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple').then((res) =>{
     return res.json();
 }).then(loadedQuestions =>{
    questions = loadedQuestions.results.map((loadedQuestions) => {
@@ -22,7 +25,7 @@ fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=mul
        answerChoices.splice(formattedQuestion.answer - 1, 0, loadedQuestions.correct_answer);
 
        answerChoices.forEach((choice, index) =>{
-           formattedQuestion["choice" + (index+1)] = choice;
+           formattedQuestion['choice' + (index+1)] = choice;
        });
        return formattedQuestion;
    });
@@ -32,7 +35,7 @@ fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=mul
 });
 //Constants
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 3;
+const MAX_QUESTIONS = 10;
 
 startGame = () =>{
     questionCounter = 0;
@@ -40,6 +43,8 @@ startGame = () =>{
     // spread operator => copy the content of the questions array inside the availableQuestion array (when we change one, the other changes as well)
     availableQuestion = [...questions];
     getNewQuestion();
+    game.classList.remove('hidden');
+    loader.classList.add('hidden');
 }
 getNewQuestion = () =>{
     if(availableQuestion.length === 0 || questionCounter >= MAX_QUESTIONS){

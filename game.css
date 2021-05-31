@@ -21,32 +21,50 @@
   padding: 1.5rem;
   width: 100%;
 }
-.correct{
+.correct {
   background-color: #28a745;
 }
-.incorrect{
+.incorrect {
   background-color: #dc3545;
 }
 /* HUD (Head's up display)*/
-#hud{
+#hud {
   display: flex;
   justify-content: space-between;
 }
-.hud-prefix{
+.hud-prefix {
   text-align: center;
   font-size: 2rem;
 }
-.hud-main-text{
+.hud-main-text {
   text-align: center;
 }
-#progress--bar{
+#progress--bar {
   width: 20rem;
   height: 4rem;
   border: 0.3rem solid #56a5eb;
   margin-top: 1.5rem;
 }
-#progress--bar--full{
-height: 3.4rem;
-background-color: #56a5eb;
-width: 0;
+#progress--bar--full {
+  height: 3.4rem;
+  background-color: #56a5eb;
+  width: 0;
+}
+/* LOADER */
+#loader {
+  border: 1.6rem solid white;
+  border-radius: 50%;
+  border-top: 1.6rem solid #56a5eb;
+  width: 12rem;
+  height: 12rem;
+  animation: spin 2s linear infinite;
+}
+/* animation for the loader to spin */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
